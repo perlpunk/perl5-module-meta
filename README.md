@@ -36,6 +36,14 @@ Make it easier for vendors and always use the same amounts of digits. If you wan
 to change to a different versioning scheme, then at least change the major
 version before.
 
+Use the same distribution version everywhere (`META.*` files, `Makefile.PL`,
+archive name, Changelog).
+
+Always increase the version for a new upload and do not reuse the same version.
+
+Also have a look at Grinnz' [Guide to Versions in
+Perl](http://blogs.perl.org/users/grinnz/2018/04/a-guide-to-versions-in-perl.html).
+
 ## Create a useful description
 
 Every module should have a `DESCRIPTION` section in the pod documentation.
@@ -136,6 +144,9 @@ time. It's best to include all dependencies including the ones that are
 currently in core.
 
 Also don't forget to specify the minimum perl version.
+
+Also have a look at Neil's [Specifying dependencies for your CPAN
+distribution](http://blogs.perl.org/users/neilb/2017/05/specifying-dependencies-for-your-cpan-distribution.html).
 
 ## Shebang
 
