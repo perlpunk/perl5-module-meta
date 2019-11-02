@@ -210,6 +210,8 @@ it handle more distributions correctly.
 
 ### Debian
 
-### ...
+### Fedora
+
+[List of perl packages](https://apps.fedoraproject.org/packages/s/perl)
 
 
