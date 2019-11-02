@@ -73,7 +73,7 @@ The filename you upload should match the distribution name and version, e.g.
     Your-Module-v1.23.tar.gz
     Your-Module-v1.23.zip
 
-`tgz` and `tar.bz` might also work.
+`tgz` and `tar.bz2` might also work.
 
 The archive should unpack to `Your-Module-version`. Do not omit the version.
 If people unpack different versions of your module, they should not end up
