@@ -67,6 +67,18 @@ The filename you upload should match the distribution name and version, e.g.
 
 `tgz` and `tar.bz` might also work.
 
+The archive should unpack to `Your-Module-version`. Do not omit the version.
+If people unpack different versions of your module, they should not end up
+in the same directory.
+
+The contents of the module should be in the top folder of the archive, e.g.
+
+    Your-Module-1.23/
+        lib/Your/Module.pm
+        t/...
+        LICENSE
+        Makefile.PL
+
 ## @INC
 
 In perl 5.28, the current directory `.` was removed from `@INC`. Make sure
