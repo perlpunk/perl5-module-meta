@@ -161,6 +161,12 @@ using the bugtracker it provides, add the URL to the bugtracker in the
 `META.json/META.yml`. That makes it easier for people to find existing
 and file new bugs.
 
+## Non-perl dependencies
+
+If your module needs an external library, there is currently no way to specify
+this in `META.json`/`META.yml`. But you can help vendors by documenting
+the external libaries your module needs in pod.
+
 ## CPAN Testers
 
 Regularly look at the CPAN Testers site (linked from your module page on MetaCPAN)
