@@ -10,7 +10,24 @@ meta data.
 People maintaining `rpm` or `deb` repositories for perl often have to do a lot
 of manual work, although theoretically most of it can be automated.
 
-## Use a consistent versioning scheme
+## Table of Contents
+
+* [Versions](#Versions) - Use a consistent versioning scheme
+* [Description](#Description) - Create a useful description
+* [Archive filename](#Archive-filename) - Create a correct archive
+* [`.` in `@INC`](#INC) - The current directory `.` is not in `@INC`
+* [Changelog](#Changelog) - Use a common filename and format
+* [License](#License) - Correctly specify license
+* [Dependencies](#Dependencies) - Specify all dependencies
+* [Shebang](#Shebang) - Use a portable shebang for scripts
+* [MANIFEST](#MANIFEST) - Exclude certain files from your archive
+* [Bugtracker](#Bugtracker) - Specify URL to Bugtracker
+* [Tests](#Tests) - Make sure tests are passing everywhere
+* [Other Resources](#Other-Resources)
+
+## Versions
+
+### Use a consistent versionun scheme
 
 The short story: Always use the same amount of digits after the major version.
 
@@ -39,12 +56,14 @@ version before.
 Use the same distribution version everywhere (`META.*` files, `Makefile.PL`,
 archive name, Changelog).
 
+### Do not reuse versions
+
 Always increase the version for a new upload and do not reuse the same version.
 
 Also have a look at Grinnz' [Guide to Versions in
 Perl](http://blogs.perl.org/users/grinnz/2018/04/a-guide-to-versions-in-perl.html).
 
-## Create a useful description
+## Description
 
 Every module should have a `DESCRIPTION` section in the pod documentation.
 
@@ -87,7 +106,7 @@ The contents of the module should be in the top folder of the archive, e.g.
         LICENSE
         Makefile.PL
 
-## `.` in `@INC`
+## `@INC`
 
 In perl 5.26, the current directory `.` was removed from `@INC`. Make sure
 you don't rely on `.`, for example when using `Module::Install`, or when
@@ -122,11 +141,14 @@ For vendors to be able to parse the file, use a format like this:
 
 The version should exactly match the version of the distribution.
 
-If you fixed a bug that was reported in a ticket/issue, mention the issue.
+Newer versions should be above older versions.
+
+If you fixed a bug that was reported in an issue, mention the issue.
 Vendors often create local patches for modules and, if they have time, create
-a ticket.
+an issue.
 If you fixed the issue and mention it in the changelog, vendors can more
 easily remove outdated patches.
+
 
 ## License
 
@@ -148,6 +170,12 @@ Also don't forget to specify the minimum perl version.
 Also have a look at Neil's [Specifying dependencies for your CPAN
 distribution](http://blogs.perl.org/users/neilb/2017/05/specifying-dependencies-for-your-cpan-distribution.html).
 
+### Non-perl dependencies
+
+If your module needs an external library, there is currently no way to specify
+this in `META.json`/`META.yml`. But you can help vendors by documenting
+the external libaries your module needs in pod.
+
 ## Shebang
 
 The first line of any perl scripts included in your distribution, especially
@@ -165,23 +193,21 @@ like editor backup files (`.swp`), the `.git` folder, forgotten tarballs.
 
 Usually build tools will skip files listed in `MANIFEST.SKIP`.
 
-## Bugtracker URL
+## Bugtracker
 
 If your repository is hosted at a site like GitHub or BitBucket, and you are
 using the bugtracker it provides, add the URL to the bugtracker in the
 `META.json/META.yml`. That makes it easier for people to find existing
 and file new bugs.
 
-## Non-perl dependencies
-
-If your module needs an external library, there is currently no way to specify
-this in `META.json`/`META.yml`. But you can help vendors by documenting
-the external libaries your module needs in pod.
-
-## CPAN Testers
+## Tests
 
 Regularly look at the CPAN Testers site (linked from your module page on MetaCPAN)
 to see if there are any test failures.
+
+If possible, don't rely on a working network and mock network operations.
+
+Don't rely on a fixed order of hash keys.
 
 ## Other resources
 
