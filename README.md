@@ -27,7 +27,7 @@ of manual work, although theoretically most of it can be automated.
 
 ## Versions
 
-### Use a consistent versionun scheme
+### Use a consistent versioning scheme
 
 The short story: Always use the same amount of digits after the major version.
 
