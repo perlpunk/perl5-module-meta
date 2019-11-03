@@ -87,9 +87,9 @@ The contents of the module should be in the top folder of the archive, e.g.
         LICENSE
         Makefile.PL
 
-## @INC
+## `.` in `@INC`
 
-In perl 5.28, the current directory `.` was removed from `@INC`. Make sure
+In perl 5.26, the current directory `.` was removed from `@INC`. Make sure
 you don't rely on `.`, for example when using `Module::Install`, or when
 using modules in your test directory.
 
