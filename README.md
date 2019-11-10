@@ -23,6 +23,7 @@ of manual work, although theoretically most of it can be automated.
 * [MANIFEST](#MANIFEST) - Exclude certain files from your archive
 * [Bugtracker](#Bugtracker) - Specify URL to Bugtracker
 * [Tests](#Tests) - Make sure tests are passing everywhere
+* [Installer](#Installer)
 * [Author Tests](#Author-Tests) - Useful Author tests
 * [Other Resources](#Other-Resources)
 
@@ -168,6 +169,10 @@ List *all* dependencies. The list of modules contained in core may change over
 time. It's best to include all dependencies including the ones that are
 currently in core.
 
+If possible, add the minimum required version of the dependency. For example,
+when using `Test::More::done_testing()`, require `Test::More` version `0.88`,
+as it was added in this version.
+
 Also don't forget to specify the minimum perl version.
 
 Also have a look at Neil's [Specifying dependencies for your CPAN
@@ -224,6 +229,25 @@ If possible, don't rely on a working network and mock network operations.
 
 Don't rely on a fixed order of hash keys.
 
+Tests should not create or alter files in the distribution.
+If you have to create files for tests, delete them at the end.
+
+This can be done in an `END` block, so the files will be deleted also when
+a test fails and exits unexpectedly.
+
+    use File::Path 'rmtree';
+    ...
+    END {
+        rmtree "/path/to/temporary/testfiles";
+    }
+
+## Installer
+
+Don't prompt for input in the install process, for example in `Makefile.PL` or
+`Build.PL`. This will break automatic installations.
+If you need a prompt, use `ExtUtils::MakeMaker::prompt()`, as it will detect
+if it's running interactively or not and use a default.
+
 ## Author Tests
 
 There are a number of Test modules that help you avoiding some of the mentioned
@@ -272,6 +296,7 @@ See the [Debian Perl Group](https://perl-team.pages.debian.net/)
   Group](https://salsa.debian.org/perl-team/modules/packages)
 * [Debian Package Tracker](https://tracker.debian.org/teams/pkg-perl/)
 * [How to request a package](https://perl-team.pages.debian.net/howto/RFP.html)
+* Presentation [From Debian, with ♥](https://perl-team.pages.debian.net/docs/yapc-europe-2016/from_debian_with_love.pdf)
 
 The tool to create debian packages from Perl modules is
 [dh-make-perl](https://salsa.debian.org/perl-team/modules/packages/dh-make-perl).
