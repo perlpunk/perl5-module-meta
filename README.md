@@ -223,10 +223,10 @@ Don't rely on a fixed order of hash keys.
 
 ## Other resources
 
-### openSUSE Build Service (OBS)
+### openSUSE
 
 You can find a lot of CPAN modules in the [devel:languages:perl](https://build.opensuse.org/project/show/devel:languages:perl)
-repository of OBS.
+repository of openSUSE Build Service (OBS).
 
 Look if you can find your module there. Maybe you'll find out that it contains
 local patches.
@@ -247,6 +247,16 @@ distribution.
 it handle more distributions correctly.
 
 ### Debian
+
+See the [Debian Perl Group](https://perl-team.pages.debian.net/)
+
+* List of [perl modules maintained by the Debian Perl
+  Group](https://salsa.debian.org/perl-team/modules/packages)
+* [Debian Package Tracker](https://tracker.debian.org/teams/pkg-perl/)
+* [How to request a package](https://perl-team.pages.debian.net/howto/RFP.html)
+
+The tool to create debian packages from Perl modules is
+[dh-make-perl](https://salsa.debian.org/perl-team/modules/packages/dh-make-perl).
 
 ### Fedora
 
