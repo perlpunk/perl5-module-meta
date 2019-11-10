@@ -23,6 +23,7 @@ of manual work, although theoretically most of it can be automated.
 * [MANIFEST](#MANIFEST) - Exclude certain files from your archive
 * [Bugtracker](#Bugtracker) - Specify URL to Bugtracker
 * [Tests](#Tests) - Make sure tests are passing everywhere
+* [Author Tests](#Author-Tests) - Useful Author tests
 * [Other Resources](#Other-Resources)
 
 ## Versions
@@ -82,6 +83,8 @@ Every module should have a `DESCRIPTION` section in the pod documentation.
 
 This description is usually what ends up in the vendor package description.
 Don't make it too long and create extra headers for more specific parts.
+
+Also check for spelling mistakes. See [Author Tests](#Author-Tests).
 
 ## Archive filename
 
@@ -220,6 +223,21 @@ to see if there are any test failures.
 If possible, don't rely on a working network and mock network operations.
 
 Don't rely on a fixed order of hash keys.
+
+## Author Tests
+
+There are a number of Test modules that help you avoiding some of the mentioned
+issues.
+
+* [Test::Pod](https://metacpan.org/pod/Test::Pod) - Check for correct POD
+* [Test::Spelling](https://metacpan.org/pod/Test::Spelling) - Check for spelling mistakes in POD
+* [Test::CPAN::Meta](https://metacpan.org/pod/Test::CPAN::Meta) - Validate `META.yml`
+* [Test::Kwalitee](https://metacpan.org/pod/Test::Kwalitee) - Includes a number of different checks
+* [Test::CheckChanges](https://metacpan.org/pod/Test::CheckChanges) - Check that the Changes file matches the distribution
+* [Test::CPAN::Changes](https://metacpan.org/pod/Test::CPAN::Changes) - Check format of Changes file
+
+Place them in the `xt/` directory so they are not run by default. They
+should be run by the author before releasing.
 
 ## Other resources
 
