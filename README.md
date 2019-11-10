@@ -186,6 +186,18 @@ the ones that will be installed, should look like that:
 When the module is installed, this line will be automatically replaced with
 the path to perl that was used for building.
 
+Alternatively `#!perl` should also work.
+
+Note that if you use
+
+    #!/usr/bin/env perl
+
+the line is currently not rewritten. See
+[Perl-Toolchain-Gang/ExtUtils-MakeMaker#58](https://github.com/Perl-Toolchain-Gang/ExtUtils-MakeMaker/issues/58)
+for a discussion on this.  If the line is not rewritten and your installed
+script is executed with a different perl, this can lead to problems, for example
+dependencies will not be found.
+
 ## MANIFEST
 
 Make sure to not include files in your archive that don't belong there,
