@@ -325,14 +325,18 @@ and `1.20` to `v1.200`.
 Basically, if a module has a version without a `v` in front and with only one
 dot, it's a a decimal version.
 
-If you are using dotted tuples, you can convert all versions with the
-[version.pm](https://metacpan.org/pod/version) module:
+If you are using dotted tuples, you should normalize all versions. You can use
+the [version.pm](https://metacpan.org/pod/version) module:
 
     my $tuple = version->parse($input_string)->normal;
     # 1.2      -> v1.200.0
     # 1.2345   -> v1.234.500
     # v1.2345  -> v1.2345.0
     # 1.2345.6 -> v1.2345.6
+
+This is important because the number of digits in decimal versions may not
+stay the same for a module, and if the versions aren't normalized, the
+comparison will return a wrong result.
 
 You can find more details in Grinnz' [Guide to Versions in
 Perl](http://blogs.perl.org/users/grinnz/2018/04/a-guide-to-versions-in-perl.html).
@@ -349,8 +353,11 @@ Licenses can be found at several places in a distribution, `META.yml` and
 [CPAN::Meta::Spec](https://metacpan.org/pod/CPAN::Meta::Spec#SERIALIZATION):
 
 > In the past, the distribution metadata structure had been packed with
-> distributions as META.yml, a file in the YAML Tiny format (for which, see
-> YAML::Tiny). Tools that consume distribution metadata from disk should be
-> capable of loading META.yml, but should prefer META.json if both are found.
+> distributions as `META.yml`, a file in the YAML Tiny format (for which, see
+> [YAML::Tiny](https://metacpan.org/pod/YAML::Tiny). Tools that consume
+> distribution metadata from disk should be capable of loading `META.yml`, but
+> should prefer `META.json` if both are found.
 
-[`META.yml` 1.4 specification](https://metacpan.org/pod/CPAN::Meta::History::Meta_1_4#license)
+[`META.yml` 1.4
+specification](https://metacpan.org/pod/CPAN::Meta::History::Meta_1_4#license)
+
