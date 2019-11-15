@@ -12,6 +12,8 @@ of manual work, although theoretically most of it can be automated.
 
 ## Table of Contents
 
+### Author
+
 * [Versions](#Versions) - Use a consistent versioning scheme
 * [Description](#Description) - Create a useful description
 * [Archive filename](#Archive-filename) - Create a correct archive
@@ -26,6 +28,11 @@ of manual work, although theoretically most of it can be automated.
 * [Installer](#Installer)
 * [Author Tests](#Author-Tests) - Useful Author tests
 * [Other Resources](#Other-Resources)
+
+### Vendors
+
+* [Versions](#Versions)
+* [License](#License)
 
 ## Versions
 
@@ -306,3 +313,29 @@ The tool to create debian packages from Perl modules is
 [List of perl packages](https://apps.fedoraproject.org/packages/s/perl)
 
 
+# Vendors
+
+## Versions
+
+Versions in Perl come in two forms, decimal numbers and dotted decimal tuples.
+
+In Perl, the version `1.1901` is semantically equal to `v1.190.100`,
+and `1.20` to `v1.200`.
+
+Basically, if a module has a version without a `v` in front and with only one
+dot, it's a a decimal version.
+
+If you are using dotted tuples, you can convert all versions with the
+[version.pm](https://metacpan.org/pod/version) module:
+
+    my $tuple = version->parse($input_string)->normal;
+    # 1.2      -> v1.200.0
+    # 1.2345   -> v1.234.500
+    # v1.2345  -> v1.2345.0
+    # 1.2345.6 -> v1.2345.6
+
+You can find more details in Grinnz' [Guide to Versions in
+Perl](http://blogs.perl.org/users/grinnz/2018/04/a-guide-to-versions-in-perl.html).
+
+
+## License
