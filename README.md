@@ -339,3 +339,12 @@ Perl](http://blogs.perl.org/users/grinnz/2018/04/a-guide-to-versions-in-perl.htm
 
 
 ## License
+
+https://metacpan.org/pod/CPAN::Meta::Spec#SERIALIZATION
+
+> In the past, the distribution metadata structure had been packed with
+> distributions as META.yml, a file in the YAML Tiny format (for which, see
+> YAML::Tiny). Tools that consume distribution metadata from disk should be
+> capable of loading META.yml, but should prefer META.json if both are found.
+
+https://metacpan.org/pod/CPAN::Meta::History::Meta_1_4#license
